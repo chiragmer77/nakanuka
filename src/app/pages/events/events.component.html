@@ -1,0 +1,47 @@
+<div class="p-6">
+  <!-- Header -->
+  <div class="flex items-center justify-between">
+    <h1 class="text-2xl font-semibold">Events</h1>
+    <button
+      routerLink="/events/add-event"
+      class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-white font-medium shadow-md hover:opacity-90 focus:outline-none"
+      style="background-color: rgb(141 64 166)"
+    >
+      <svg
+        class="w-4 h-4"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden
+      >
+        <path
+          d="M12 5v14M5 12h14"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <span>Add List</span>
+    </button>
+  </div>
+
+  <!-- Cards grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+    <ng-container *ngFor="let card of cards; let i = index">
+      <div class="bg-white rounded-xl shadow-md p-5 border relative min-h-[200px]">
+        <div class="flex justify-between items-start">
+          <div>
+            <h2 class="text-lg font-semibold">{{ card.title }}</h2>
+            <p class="text-sm text-gray-500 mt-1">{{ card.date }}</p>
+          </div>
+          <div class="text-xs font-medium px-2 py-1 rounded-md" style="color: white">
+            {{ card.label }}
+          </div>
+        </div>
+
+        <p class="mt-3 text-sm text-gray-600">{{ card.description }}</p>
+      </div>
+    </ng-container>
+  </div>
+</div>

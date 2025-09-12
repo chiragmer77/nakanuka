@@ -1,0 +1,107 @@
+<div class="w-full max-w-6xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+  <div class="flex flex-col lg:flex-row">
+    <div class="flex-1 bg-gradient-to-br bg-[#8D40A6] p-8 lg:p-12 xl:p-16 relative">
+      <div class="max-w-md mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl lg:text-4xl font-bold text-white mb-2">SIGN UP</h2>
+          <p class="text-purple-200 text-lg">CREATE YOUR ACCOUNT!</p>
+        </div>
+
+        <form (ngSubmit)="onSubmit()" class="space-y-6">
+          <div>
+            <input
+              id="fullName"
+              name="fullName"
+              type="text"
+              autocomplete="name"
+              required
+              [(ngModel)]="fullName"
+              class="appearance-none relative block w-full px-6 py-4 bg-white/90 border-0 placeholder-gray-500 text-gray-900 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-300 focus:bg-white transition-all duration-200"
+              placeholder="Full Name"
+            />
+          </div>
+
+          <div>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+              [(ngModel)]="email"
+              class="appearance-none relative block w-full px-6 py-4 bg-white/90 border-0 placeholder-gray-500 text-gray-900 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-300 focus:bg-white transition-all duration-200"
+              placeholder="Email"
+            />
+          </div>
+
+          <div>
+            <input
+              id="mobileNumber"
+              name="mobileNumber"
+              type="tel"
+              autocomplete="tel"
+              required
+              [(ngModel)]="mobileNumber"
+              class="appearance-none relative block w-full px-6 py-4 bg-white/90 border-0 placeholder-gray-500 text-gray-900 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-300 focus:bg-white transition-all duration-200"
+              placeholder="Mobile Number"
+            />
+          </div>
+
+          <div>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              autocomplete="new-password"
+              required
+              [(ngModel)]="password"
+              class="appearance-none relative block w-full px-6 py-4 bg-white/90 border-0 placeholder-gray-500 text-gray-900 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-300 focus:bg-white transition-all duration-200"
+              placeholder="Password"
+            />
+          </div>
+
+          <div>
+            <button
+              type="submit"
+              class="group relative w-full flex justify-center py-4 px-6 border border-transparent text-lg font-semibold rounded-xl text-white bg-purple-800 hover:bg-purple-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-all duration-200 shadow-lg"
+            >
+              Sign Up
+            </button>
+          </div>
+        </form>
+
+        <!-- Login Redirection -->
+        <div class="mt-8 text-center">
+          <p class="text-purple-200 text-sm">
+            Already have an account?
+            <a
+              [routerLink]="['/auth/login']"
+              class="font-semibold text-white hover:text-purple-200 underline transition-colors ml-1 cursor-pointer"
+            >
+              Sign in here
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Decorative Elements -->
+      <div class="absolute bottom-8 left-8 opacity-30">
+        <div class="w-16 h-16 bg-purple-400 rounded-full blur-xl"></div>
+        <div class="w-24 h-24 bg-pink-400 rounded-lg transform rotate-45 -mt-12 ml-8 blur-lg"></div>
+      </div>
+    </div>
+
+    <!-- Right Side - Illustration -->
+    <div
+      class="flex-1 bg-gradient-to-br from-purple-50 to-pink-50 p-8 lg:p-12 flex items-center justify-center"
+    >
+      <div class="w-full max-w-lg">
+        <img
+          src="/assets/login-register.png"
+          alt="Sign Up Illustration"
+          class="w-full h-auto object-contain rounded-2xl"
+        />
+      </div>
+    </div>
+  </div>
+</div>

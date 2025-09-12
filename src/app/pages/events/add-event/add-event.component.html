@@ -1,0 +1,297 @@
+<div class="max-w-6xl mx-auto p-5 bg-gray-50 min-h-screen">
+  <!-- Header -->
+
+  <!-- Create Event Section -->
+  <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+    <div class="p-6">
+      <!-- Flow Steps -->
+      <div class="flex justify-between items-center mb-8 p-4 bg-teal-50 rounded-lg">
+        <div
+          class="bg-indigo-500 text-white px-4 py-2 rounded-full text-sm font-semibold"
+          [class.bg-indigo-600]="currentStep >= 1"
+        >
+          Event Details
+        </div>
+        <div class="text-gray-400 text-lg">→</div>
+        <div
+          class="bg-indigo-500 text-white px-4 py-2 rounded-full text-sm font-semibold"
+          [class.bg-indigo-600]="currentStep >= 2"
+        >
+          Gift Amount
+        </div>
+        <div class="text-gray-400 text-lg">→</div>
+        <div
+          class="bg-indigo-500 text-white px-4 py-2 rounded-full text-sm font-semibold"
+          [class.bg-indigo-600]="currentStep >= 3"
+        >
+          Guest List
+        </div>
+        <div class="text-gray-400 text-lg">→</div>
+        <div
+          class="bg-indigo-500 text-white px-4 py-2 rounded-full text-sm font-semibold"
+          [class.bg-indigo-600]="currentStep >= 4"
+        >
+          Preview & Send
+        </div>
+      </div>
+
+      <!-- Step 1: Event Details -->
+      <div *ngIf="currentStep === 1" class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+        <div class="border-2 border-gray-200 rounded-lg p-5 bg-gray-50">
+          <div class="font-semibold text-gray-800 mb-4 pb-2 border-b border-gray-200">
+            1. Add Event Details
+          </div>
+          <div class="space-y-3">
+            <input
+              [(ngModel)]="eventData.name"
+              class="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              placeholder="Event Name"
+            />
+
+            <select
+              [(ngModel)]="eventData.type"
+              class="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            >
+              <option value="">Select Event Type</option>
+              <option value="birthday">Birthday Party</option>
+              <option value="housewarming">Housewarming</option>
+              <option value="wedding">Wedding</option>
+              <option value="graduation">Graduation</option>
+              <option value="babyshower">Baby Shower</option>
+              <option value="corporate">Corporate Event</option>
+              <option value="anniversary">Anniversary</option>
+              <option value="kids">Kids Party</option>
+              <option value="dinner">Dinner Party</option>
+              <option value="theme">Theme Party</option>
+            </select>
+
+            <input
+              [(ngModel)]="eventData.date"
+              type="date"
+              class="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+
+            <input
+              [(ngModel)]="eventData.venue"
+              class="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              placeholder="Venue Address"
+            />
+          </div>
+        </div>
+
+        <div class="border-2 border-gray-200 rounded-lg p-5 bg-gray-50">
+          <div class="font-semibold text-gray-800 mb-4 pb-2 border-b border-gray-200">
+            2. Set Base Gift Amount
+          </div>
+          <div class="space-y-3">
+            <input
+              [(ngModel)]="eventData.baseAmount"
+              type="number"
+              class="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              placeholder="Base Amount (€)"
+            />
+
+            <div class="flex items-center gap-2">
+              <input
+                [(ngModel)]="eventData.allowAdditional"
+                type="checkbox"
+                id="allowAdditional"
+                class="w-4 h-4 text-indigo-600"
+              />
+              <label for="allowAdditional" class="text-sm">Allow additional contributions</label>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <input
+                [(ngModel)]="eventData.noPets"
+                type="checkbox"
+                id="noPets"
+                class="w-4 h-4 text-indigo-600"
+              />
+              <label for="noPets" class="text-sm">No Pets</label>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <input
+                [(ngModel)]="eventData.over18Only"
+                type="checkbox"
+                id="over18Only"
+                class="w-4 h-4 text-indigo-600"
+              />
+              <label for="over18Only" class="text-sm">Over 18s Only</label>
+            </div>
+
+            <div class="bg-green-50 p-3 rounded text-xs">
+              <strong>Included:</strong> Free welcome drinks, finger food, transportation to nearest
+              city
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Invitation Design -->
+      <div *ngIf="currentStep === 2" class="mb-8">
+        <div class="border-2 border-gray-200 rounded-lg p-5 bg-gray-50">
+          <div class="font-semibold text-gray-800 mb-4 pb-2 border-b border-gray-200">
+            3. Pick Your Invitation Design
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div
+              *ngFor="let design of inviteDesigns"
+              (click)="selectDesign(design.id)"
+              class="border-2 rounded p-3 text-center text-xs cursor-pointer transition-colors"
+              [class.border-indigo-500]="design.selected"
+              [class.border-gray-200]="!design.selected"
+            >
+              <div class="h-10 rounded mb-2" [ngStyle]="{ background: design.gradient }"></div>
+              {{ design.name }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3: Guest List -->
+      <div *ngIf="currentStep === 3" class="mb-8">
+        <div class="border-2 border-gray-200 rounded-lg p-5 bg-gray-50">
+          <div class="font-semibold text-gray-800 mb-4 pb-2 border-b border-gray-200">
+            4. Upload Guest List
+          </div>
+
+          <div class="grid grid-cols-3 gap-2 mb-4">
+            <button
+              (click)="setGuestInputMethod('manual')"
+              class="bg-gray-200 text-gray-600 px-4 py-2 rounded text-sm hover:bg-gray-300"
+              [class.bg-indigo-500]="guestInputMethod === 'manual'"
+              [class.text-white]="guestInputMethod === 'manual'"
+            >
+              Type Manually
+            </button>
+            <button
+              (click)="setGuestInputMethod('csv')"
+              class="bg-gray-200 text-gray-600 px-4 py-2 rounded text-sm hover:bg-gray-300"
+              [class.bg-indigo-500]="guestInputMethod === 'csv'"
+              [class.text-white]="guestInputMethod === 'csv'"
+            >
+              Upload CSV
+            </button>
+            <button
+              (click)="setGuestInputMethod('contacts')"
+              class="bg-gray-200 text-gray-600 px-4 py-2 rounded text-sm hover:bg-gray-300"
+              [class.bg-indigo-500]="guestInputMethod === 'contacts'"
+              [class.text-white]="guestInputMethod === 'contacts'"
+            >
+              Import Contacts
+            </button>
+          </div>
+
+          <!-- Manual Guest Entry -->
+          <div *ngIf="guestInputMethod === 'manual'" class="space-y-3 mb-4">
+            <div class="flex gap-2">
+              <input
+                [(ngModel)]="newGuestName"
+                class="flex-1 px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                placeholder="Guest Name"
+              />
+              <input
+                [(ngModel)]="newGuestEmail"
+                class="flex-1 px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                placeholder="Guest Email"
+              />
+              <button
+                (click)="addGuest()"
+                class="bg-indigo-500 text-white px-4 py-2 rounded text-sm hover:bg-indigo-600"
+              >
+                Add
+              </button>
+            </div>
+          </div>
+
+          <!-- Guest List Display -->
+          <div class="bg-gray-100 border border-gray-200 rounded p-3 h-32 overflow-y-auto">
+            <div
+              *ngFor="let guest of guestList"
+              class="flex justify-between items-center py-2 border-b border-gray-100 last:border-b-0"
+            >
+              <span class="text-sm">{{ guest.name }} ({{ guest.email }})</span>
+              <span class="text-green-500 text-sm" *ngIf="guest.status === 'added'">✓</span>
+              <button (click)="removeGuest(guest)" class="text-red-500 text-sm hover:text-red-700">
+                ×
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4: Preview & Send -->
+      <div *ngIf="currentStep === 4" class="mb-8">
+        <div class="border-2 border-gray-200 rounded-lg p-5 bg-gray-50">
+          <div class="font-semibold text-gray-800 mb-4 pb-2 border-b border-gray-200">
+            5. Preview Event Page & Mock Invitation
+          </div>
+
+          <!-- Mock Invitation Preview -->
+          <div
+            class="text-white p-5 rounded-lg text-center mb-4"
+            [ngStyle]="{
+              background: selectedDesign?.gradient || 'linear-gradient(45deg, #667eea, #764ba2)'
+            }"
+          >
+            <h3 class="text-xl font-semibold mb-3">{{ eventData.name || 'Event Name' }}</h3>
+            <p class="mb-1"><strong>Date:</strong> {{ eventData.date || 'Select Date' }}</p>
+            <p class="mb-1"><strong>Venue:</strong> {{ eventData.venue || 'Venue Address' }}</p>
+            <p class="mb-1"><strong>Host:</strong> Your Name</p>
+            <p class="mb-3"><strong>Base Gift Share:</strong> €{{ eventData.baseAmount || '0' }}</p>
+
+            <div class="bg-white bg-opacity-20 p-2 mb-3 rounded text-xs">
+              Includes: Welcome drinks, finger food, transportation<br />
+              <span *ngIf="eventData.over18Only">Rules: Over 18s only</span>
+              <span *ngIf="eventData.noPets && eventData.over18Only">, </span>
+              <span *ngIf="eventData.noPets">No pets</span>
+            </div>
+
+            <button class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600">
+              Accept Invitation
+            </button>
+          </div>
+
+          <!-- Summary -->
+          <div class="bg-gray-100 p-4 rounded mb-4">
+            <h4 class="font-semibold mb-2">Event Summary:</h4>
+            <p class="text-sm mb-1">Guests: {{ guestList.length }}</p>
+            <p class="text-sm mb-1">
+              Expected Total: €{{ (eventData.baseAmount || 0) * guestList.length }}
+            </p>
+            <p class="text-sm">Design: {{ selectedDesign?.name || 'None selected' }}</p>
+          </div>
+
+          <button
+            (click)="sendInvites()"
+            class="w-full bg-green-500 text-white py-3 rounded font-semibold hover:bg-green-600"
+          >
+            Send Invites to All ({{ guestList.length }} guests)
+          </button>
+        </div>
+      </div>
+
+      <!-- Navigation Buttons -->
+      <div class="flex justify-between mt-8">
+        <button
+          (click)="previousStep()"
+          *ngIf="currentStep > 1"
+          class="bg-gray-200 text-gray-600 px-6 py-2 rounded hover:bg-gray-300"
+        >
+          Previous
+        </button>
+        <div></div>
+        <button
+          (click)="nextStep()"
+          *ngIf="currentStep < 4"
+          class="bg-indigo-500 text-white px-6 py-2 rounded hover:bg-indigo-600"
+          [disabled]="!canProceedToNext()"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,102 @@
+/* Dashboard layout specific styles */
+
+/* Header Styles */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(20px);
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+/* Logo and Navigation Styles */
+.logo-icon {
+  transition: transform 0.2s ease-in-out;
+}
+
+.logo-icon:hover {
+  transform: scale(1.05);
+}
+
+/* Navigation Links */
+nav a {
+  transition: all 0.2s ease-in-out;
+  border-radius: 0.5rem;
+}
+
+nav a:hover:not(.bg-purple-600) {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+nav a.bg-purple-600 {
+  box-shadow: 0 4px 6px -1px rgba(147, 51, 234, 0.1), 0 2px 4px -1px rgba(147, 51, 234, 0.06);
+}
+
+/* Header Action Buttons */
+header button {
+  transition: all 0.2s ease-in-out;
+  border-radius: 0.5rem;
+}
+
+header button:hover {
+  background-color: #f3f4f6;
+  transform: scale(1.05);
+}
+
+/* Profile Section */
+.profile-avatar {
+  transition: transform 0.2s ease-in-out;
+}
+
+.profile-avatar:hover {
+  transform: scale(1.05);
+}
+
+/* Mobile Menu Toggle (for future implementation) */
+@media (max-width: 768px) {
+  nav {
+    display: none;
+  }
+}
+
+/* Main Content Spacing */
+main {
+  min-height: calc(100vh - 4rem); /* Subtract header height */
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  header .max-w-7xl {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  main.max-w-7xl {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Custom scrollbar for any navigation elements */
+nav {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e0 #f7fafc;
+}
+
+nav::-webkit-scrollbar {
+  width: 6px;
+}
+
+nav::-webkit-scrollbar-track {
+  background: #f7fafc;
+}
+
+nav::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 3px;
+}
+
+nav::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}

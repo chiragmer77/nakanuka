@@ -1,0 +1,62 @@
+<header class="from-purple-50 to-pink-50 bg-gradient-to-br shadow-sm border-b border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <!-- Left side - Logo -->
+      <div class="flex items-center">
+        <div class="flex items-center space-x-2">
+          <span class="text-xl font-semibold text-gray-900">NAKANUKA</span>
+        </div>
+      </div>
+
+      <!-- Center - Navigation -->
+      <nav class="hidden md:flex space-x-8">
+        <a
+          routerLink="/dashboard"
+          routerLinkActive="bg-[#8D40A6] text-white"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="bg-[#8D40A6] text-white px-4 py-2 rounded-lg text-sm font-medium"
+        >
+          Dashboard
+        </a>
+        <a
+          routerLink="/events"
+          routerLinkActive="bg-[#8D40A6] text-white"
+          class="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium flex items-center space-x-2"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+            ></path>
+          </svg>
+          <span>Events</span>
+        </a>
+      </nav>
+
+      <!-- Right side - Profile and Logout -->
+      <div class="flex items-center space-x-4">
+        <span class="text-sm font-medium text-gray-700">John Smith</span>
+        <button
+          class="text-gray-600 hover:text-gray-900 p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+          title="Logout"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Main Content Area with proper spacing -->
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <router-outlet></router-outlet>
+</main>
