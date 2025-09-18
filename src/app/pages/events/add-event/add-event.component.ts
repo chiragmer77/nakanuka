@@ -5,6 +5,7 @@ interface Guest {
     name: string;
     email: string;
     status: 'added' | 'invalid';
+    mobile: number;
 }
 
 interface InviteDesign {
@@ -37,12 +38,8 @@ export class AddEventComponent {
         over18Only: true
     };
 
-    guestList: Guest[] = [
-        { name: 'John Doe', email: 'john@email.com', status: 'added' },
-        { name: 'Jane Smith', email: 'jane@email.com', status: 'added' },
-        { name: 'Bob Wilson', email: 'bob@email.com', status: 'added' }
-    ];
-
+    newGuestMobile = '';
+    guestList: { name: string; email: string; mobile: string; status: string }[] = [];
     inviteDesigns: InviteDesign[] = [
         {
             id: 'elegant',
@@ -111,24 +108,9 @@ export class AddEventComponent {
         this.guestInputMethod = method;
     }
 
-    addGuest() {
-        if (this.newGuestName && this.newGuestEmail) {
-            // Simple email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            const status = emailRegex.test(this.newGuestEmail) ? 'added' : 'invalid';
 
-            this.guestList.push({
-                name: this.newGuestName,
-                email: this.newGuestEmail,
-                status
-            });
 
-            this.newGuestName = '';
-            this.newGuestEmail = '';
-        }
-    }
-
-    removeGuest(guest: Guest) {
+    removeGuest(guest: any) {
         const index = this.guestList.indexOf(guest);
         if (index > -1) {
             this.guestList.splice(index, 1);
@@ -139,5 +121,54 @@ export class AddEventComponent {
         // Handle sending invites
         console.log('Sending invites to:', this.guestList);
         alert(`Event created successfully! Invites sent to ${this.guestList.length} guests.`);
+    }
+
+    guestErrors = { name: '', email: '', mobile: '' };
+
+    addGuest() {
+        this.guestErrors = { name: '', email: '', mobile: '' }; // reset errors
+        let hasError = false;
+
+        if (!this.newGuestName.trim()) {
+            this.guestErrors.name = 'Name is required';
+            hasError = true;
+        }
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!this.newGuestEmail.trim()) {
+            this.guestErrors.email = 'Email is required';
+            hasError = true;
+        } else if (!emailPattern.test(this.newGuestEmail)) {
+            this.guestErrors.email = 'Enter a valid email';
+            hasError = true;
+        }
+
+        const mobilePattern = /^[0-9]{10}$/;
+        if (!this.newGuestMobile.trim()) {
+            this.guestErrors.mobile = 'Mobile number is required';
+            hasError = true;
+        } else if (!mobilePattern.test(this.newGuestMobile)) {
+            this.guestErrors.mobile = 'Enter a valid 10-digit number';
+            hasError = true;
+        }
+
+        if (hasError) return;
+
+        this.guestList.push({
+            name: this.newGuestName,
+            email: this.newGuestEmail,
+            mobile: this.newGuestMobile,
+            status: 'added',
+        });
+
+        // Reset fields
+        this.newGuestName = '';
+        this.newGuestEmail = '';
+        this.newGuestMobile = '';
+    }
+
+
+    clearError(field: 'name' | 'email' | 'mobile') {
+        this.guestErrors[field] = '';
     }
 }

@@ -4,7 +4,9 @@
       <!-- Left side - Logo -->
       <div class="flex items-center">
         <div class="flex items-center space-x-2">
-          <span class="text-xl font-semibold text-gray-900">NAKANUKA</span>
+          <img src="assets/logo.jpeg" alt="App Logo" class="h-12 w-auto" />
+
+          <!-- <span class="text-xl font-semibold text-gray-900">NAKANUKA</span> -->
         </div>
       </div>
 
@@ -14,14 +16,14 @@
           routerLink="/dashboard"
           routerLinkActive="bg-[#8D40A6] text-white"
           [routerLinkActiveOptions]="{ exact: true }"
-          class="text-gray-600  px-3 py-2 text-sm font-medium flex items-center space-x-2  hover:opacity-90"
+          class="text-gray-600 px-3 py-2 text-sm font-medium flex items-center space-x-2 hover:opacity-90"
         >
           Dashboard
         </a>
         <a
           routerLink="/events"
           routerLinkActive="bg-[#8D40A6] text-white"
-          class="text-gray-600 px-3 py-2 text-sm font-medium flex items-center space-x-2  hover:opacity-90"
+          class="text-gray-600 px-3 py-2 text-sm font-medium flex items-center space-x-2 hover:opacity-90"
         >
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
@@ -39,7 +41,7 @@
       <div class="flex items-center space-x-4">
         <span class="text-sm font-medium text-gray-700">John Smith</span>
         <button
-        routerLink="login"
+          routerLink="login"
           class="text-gray-600 hover:text-gray-900 p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
           title="Logout"
         >

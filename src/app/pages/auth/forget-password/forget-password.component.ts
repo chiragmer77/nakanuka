@@ -4,13 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
-    selector: 'app-login',
+    selector: 'app-forget-password',
     standalone: true,
     imports: [FormsModule, RouterLink, CommonModule],
-    templateUrl: './login.component.html',
-    styleUrl: './login.component.scss'
+    templateUrl: './forget-password.component.html',
+    styleUrl: './forget-password.component.scss'
 })
-export class LoginComponent {
+export class ForgetPasswordComponent {
     email = '';
     password = '';
 

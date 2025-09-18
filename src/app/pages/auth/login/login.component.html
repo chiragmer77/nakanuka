@@ -7,61 +7,100 @@
           <p class="text-purple-200 text-lg">WELCOME BACK!</p>
         </div>
 
-        <form (ngSubmit)="onSubmit()" class="space-y-6">
-          <div>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              autocomplete="email"
-              required
-              [(ngModel)]="email"
-              class="appearance-none relative block w-full px-6 py-4 bg-white/90 border-0 placeholder-gray-500 text-gray-900 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-300 focus:bg-white transition-all duration-200"
-              placeholder="Email"
-            />
-          </div>
+     <form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="space-y-6">
+  <!-- Email -->
+  <div>
+    <input
+      id="email"
+      name="email"
+      type="email"
+      autocomplete="email"
+      required
+      email
+      [(ngModel)]="email"
+      #emailCtrl="ngModel"
+      [ngClass]="{
+        'border-red-500 focus:ring-red-300': emailCtrl.invalid && emailCtrl.touched,
+        'border-green-500 focus:ring-green-300': emailCtrl.valid && emailCtrl.touched,
+        'border-gray-300': !emailCtrl.touched
+      }"
+      class="appearance-none relative block w-full px-6 py-4 bg-white/90 border rounded-xl
+             placeholder-gray-500 text-gray-900
+             focus:outline-none focus:ring-2 focus:bg-white
+             transition-all duration-200"
+      placeholder="Email"
+    />
+    <p *ngIf="emailCtrl.invalid && emailCtrl.touched" class="mt-1 text-sm text-red-500">
+      Please enter a valid email.
+    </p>
+  </div>
 
-          <div>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              autocomplete="current-password"
-              required
-              [(ngModel)]="password"
-              class="appearance-none relative block w-full px-6 py-4 bg-white/90 border-0 placeholder-gray-500 text-gray-900 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-300 focus:bg-white transition-all duration-200"
-              placeholder="Password"
-            />
-          </div>
+  <!-- Password -->
+  <div>
+    <input
+      id="password"
+      name="password"
+      type="password"
+      autocomplete="current-password"
+      required
+      minlength="6"
+      [(ngModel)]="password"
+      #passwordCtrl="ngModel"
+      [ngClass]="{
+        'border-red-500 focus:ring-red-300': passwordCtrl.invalid && passwordCtrl.touched,
+        'border-green-500 focus:ring-green-300': passwordCtrl.valid && passwordCtrl.touched,
+        'border-gray-300': !passwordCtrl.touched
+      }"
+      class="appearance-none relative block w-full px-6 py-4 bg-white/90 border rounded-xl
+             placeholder-gray-500 text-gray-900
+             focus:outline-none focus:ring-2 focus:bg-white
+             transition-all duration-200"
+      placeholder="Password"
+    />
+    <p *ngIf="passwordCtrl.errors?.['required'] && passwordCtrl.touched" class="mt-1 text-sm text-red-500">
+      Password is required.
+    </p>
+    <p *ngIf="passwordCtrl.errors?.['minlength'] && passwordCtrl.touched" class="mt-1 text-sm text-red-500">
+      Password must be at least 6 characters.
+    </p>
+  </div>
 
-          <div class="flex items-center justify-between">
-            <div class="flex items-center">
-              <input
-                id="remember-me"
-                name="remember-me"
-                type="checkbox"
-                class="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded bg-white"
-              />
-              <label for="remember-me" class="ml-3 block text-sm text-white"> Remember Me </label>
-            </div>
+  <!-- Remember + Forgot -->
+  <div class="flex items-center justify-between">
+    <div class="flex items-center">
+      <input
+        id="remember-me"
+        name="remember-me"
+        type="checkbox"
+        class="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded bg-white"
+      />
+      <label for="remember-me" class="ml-3 block text-sm text-white"> Remember Me </label>
+    </div>
 
-            <div class="text-sm">
-              <a href="#" class="font-medium text-white hover:text-purple-200 transition-colors">
-                Forgot password ?
-              </a>
-            </div>
-          </div>
+    <div class="text-sm">
+      <a routerLink="/auth/forgot-password" class="font-medium text-white hover:text-purple-200 transition-colors">
+        Forgot password ?
+      </a>
+    </div>
+  </div>
 
-          <div>
-            <button
-            routerLink="/dashboard"
-              type="submit"
-              class="group relative w-full flex justify-center py-4 px-6 border border-transparent text-lg font-semibold rounded-xl text-white bg-purple-800 hover:bg-purple-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-all duration-200 shadow-lg"
-            >
-              Login
-            </button>
-          </div>
-        </form>
+  <!-- Submit Button -->
+  <div>
+    <button
+      type="submit"
+      [disabled]="loginForm.invalid"
+      routerLink="/dashboard"
+      class="group relative w-full flex justify-center py-4 px-6 border border-transparent text-lg font-semibold rounded-xl
+             text-white bg-purple-800 hover:bg-purple-900
+             focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500
+             transition-all duration-200 shadow-lg
+             disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      Login
+    </button>
+  </div>
+</form>
+
 
         <!-- OR Divider -->
         <div class="my-6 flex items-center">

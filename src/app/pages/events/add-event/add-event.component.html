@@ -1,56 +1,61 @@
-<div class="max-w-6xl mx-auto p-5 bg-gray-50 min-h-screen">
-  <!-- Header -->
-
-  <!-- Create Event Section -->
-  <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
-    <div class="p-6">
+<div class="max-w-6xl mx-auto p-6 bg-gradient-to-br from-purple-50 to-pink-50 min-h-screen">
+  <!-- Card Container -->
+  <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-purple-100">
+    <div class="p-8">
       <!-- Flow Steps -->
-      <div class="flex justify-between items-center mb-8 p-4 bg-teal-50 rounded-lg">
+      <div
+        class="flex justify-between items-center mb-10 p-4 bg-gradient-to-r from-[#8d40a6] to-purple-600 rounded-xl shadow-sm text-white font-medium"
+      >
         <div
-          class="bg-indigo-500 text-white px-4 py-2 rounded-full text-sm font-semibold"
-          [class.bg-indigo-600]="currentStep >= 1"
+          class="px-4 py-2 rounded-full text-sm transition-all"
+          [class.bg-white]="currentStep >= 1"
+          [class.text-[#8d40a6]]="currentStep >= 1"
         >
-          Event Details
+          🎉 Event Details
         </div>
-        <div class="text-gray-400 text-lg">→</div>
+        <div class="text-white/70 text-lg">→</div>
         <div
-          class="bg-indigo-500 text-white px-4 py-2 rounded-full text-sm font-semibold"
-          [class.bg-indigo-600]="currentStep >= 2"
+          class="px-4 py-2 rounded-full text-sm transition-all"
+          [class.bg-white]="currentStep >= 2"
+          [class.text-[#8d40a6]]="currentStep >= 2"
         >
-          Gift Amount
+          💰 Gift Amount
         </div>
-        <div class="text-gray-400 text-lg">→</div>
+        <div class="text-white/70 text-lg">→</div>
         <div
-          class="bg-indigo-500 text-white px-4 py-2 rounded-full text-sm font-semibold"
-          [class.bg-indigo-600]="currentStep >= 3"
+          class="px-4 py-2 rounded-full text-sm transition-all"
+          [class.bg-white]="currentStep >= 3"
+          [class.text-[#8d40a6]]="currentStep >= 3"
         >
-          Guest List
+          👥 Guest List
         </div>
-        <div class="text-gray-400 text-lg">→</div>
+        <div class="text-white/70 text-lg">→</div>
         <div
-          class="bg-indigo-500 text-white px-4 py-2 rounded-full text-sm font-semibold"
-          [class.bg-indigo-600]="currentStep >= 4"
+          class="px-4 py-2 rounded-full text-sm transition-all"
+          [class.bg-white]="currentStep >= 4"
+          [class.text-[#8d40a6]]="currentStep >= 4"
         >
-          Preview & Send
+          📩 Preview & Send
         </div>
       </div>
 
       <!-- Step 1: Event Details -->
-      <div *ngIf="currentStep === 1" class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-        <div class="border-2 border-gray-200 rounded-lg p-5 bg-gray-50">
-          <div class="font-semibold text-gray-800 mb-4 pb-2 border-b border-gray-200">
+      <div *ngIf="currentStep === 1" class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10">
+        <div
+          class="border border-purple-200 rounded-xl p-6 bg-purple-50/40 hover:shadow-md transition"
+        >
+          <div class="font-semibold text-gray-800 mb-4 pb-2 border-b border-purple-200">
             1. Add Event Details
           </div>
-          <div class="space-y-3">
+          <div class="space-y-4">
             <input
               [(ngModel)]="eventData.name"
-              class="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              class="w-full px-4 py-2 border border-purple-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#8d40a6]"
               placeholder="Event Name"
             />
-
             <select
               [(ngModel)]="eventData.type"
-              class="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              class="w-full px-4 py-2 border border-purple-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#8d40a6]"
             >
               <option value="">Select Event Type</option>
               <option value="birthday">Birthday Party</option>
@@ -64,41 +69,44 @@
               <option value="dinner">Dinner Party</option>
               <option value="theme">Theme Party</option>
             </select>
-
             <input
               [(ngModel)]="eventData.date"
               type="date"
-              class="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              class="w-full px-4 py-2 border border-purple-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#8d40a6]"
             />
-
             <input
               [(ngModel)]="eventData.venue"
-              class="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              class="w-full px-4 py-2 border border-purple-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#8d40a6]"
               placeholder="Venue Address"
             />
           </div>
         </div>
 
-        <div class="border-2 border-gray-200 rounded-lg p-5 bg-gray-50">
-          <div class="font-semibold text-gray-800 mb-4 pb-2 border-b border-gray-200">
+        <div
+          class="border border-purple-200 rounded-xl p-6 bg-purple-50/40 hover:shadow-md transition"
+        >
+          <div class="font-semibold text-gray-800 mb-4 pb-2 border-b border-purple-200">
             2. Set Base Gift Amount
           </div>
-          <div class="space-y-3">
+          <div class="space-y-4">
             <input
               [(ngModel)]="eventData.baseAmount"
               type="number"
-              class="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              class="w-full px-4 py-2 border border-purple-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#8d40a6]"
               placeholder="Base Amount (€)"
             />
 
+            <!-- Styled checkboxes -->
             <div class="flex items-center gap-2">
               <input
                 [(ngModel)]="eventData.allowAdditional"
                 type="checkbox"
                 id="allowAdditional"
-                class="w-4 h-4 text-indigo-600"
+                class="w-4 h-4 text-[#8d40a6] rounded focus:ring-[#8d40a6]"
               />
-              <label for="allowAdditional" class="text-sm">Allow additional contributions</label>
+              <label for="allowAdditional" class="text-sm text-gray-700"
+                >Allow additional contributions</label
+              >
             </div>
 
             <div class="flex items-center gap-2">
@@ -106,9 +114,9 @@
                 [(ngModel)]="eventData.noPets"
                 type="checkbox"
                 id="noPets"
-                class="w-4 h-4 text-indigo-600"
+                class="w-4 h-4 text-[#8d40a6] rounded focus:ring-[#8d40a6]"
               />
-              <label for="noPets" class="text-sm">No Pets</label>
+              <label for="noPets" class="text-sm text-gray-700">No Pets</label>
             </div>
 
             <div class="flex items-center gap-2">
@@ -116,34 +124,38 @@
                 [(ngModel)]="eventData.over18Only"
                 type="checkbox"
                 id="over18Only"
-                class="w-4 h-4 text-indigo-600"
+                class="w-4 h-4 text-[#8d40a6] rounded focus:ring-[#8d40a6]"
               />
-              <label for="over18Only" class="text-sm">Over 18s Only</label>
+              <label for="over18Only" class="text-sm text-gray-700">Over 18s Only</label>
             </div>
 
-            <div class="bg-green-50 p-3 rounded text-xs">
-              <strong>Included:</strong> Free welcome drinks, finger food, transportation to nearest
-              city
+            <div class="bg-green-50 border border-green-200 p-3 rounded text-xs text-green-700">
+              ✅ Included: Free welcome drinks, finger food, transportation to nearest city
             </div>
           </div>
         </div>
       </div>
 
       <!-- Step 2: Invitation Design -->
-      <div *ngIf="currentStep === 2" class="mb-8">
-        <div class="border-2 border-gray-200 rounded-lg p-5 bg-gray-50">
-          <div class="font-semibold text-gray-800 mb-4 pb-2 border-b border-gray-200">
+      <div *ngIf="currentStep === 2" class="mb-10">
+        <div
+          class="border border-purple-200 rounded-xl p-6 bg-purple-50/40 hover:shadow-md transition"
+        >
+          <div class="font-semibold text-gray-800 mb-4 pb-2 border-b border-purple-200">
             3. Pick Your Invitation Design
           </div>
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div
               *ngFor="let design of inviteDesigns"
               (click)="selectDesign(design.id)"
-              class="border-2 rounded p-3 text-center text-xs cursor-pointer transition-colors"
-              [class.border-indigo-500]="design.selected"
+              class="border-2 rounded-xl p-4 text-center text-sm cursor-pointer transition-all hover:shadow-md"
+              [class.border-[#8d40a6]]="design.selected"
               [class.border-gray-200]="!design.selected"
             >
-              <div class="h-10 rounded mb-2" [ngStyle]="{ background: design.gradient }"></div>
+              <div
+                class="h-12 rounded-lg mb-2 shadow-inner"
+                [ngStyle]="{ background: design.gradient }"
+              ></div>
               {{ design.name }}
             </div>
           </div>
@@ -151,145 +163,264 @@
       </div>
 
       <!-- Step 3: Guest List -->
-      <div *ngIf="currentStep === 3" class="mb-8">
-        <div class="border-2 border-gray-200 rounded-lg p-5 bg-gray-50">
-          <div class="font-semibold text-gray-800 mb-4 pb-2 border-b border-gray-200">
-            4. Upload Guest List
-          </div>
+    <div *ngIf="currentStep === 3" class="mb-10">
+  <div
+    class="border border-purple-200 rounded-xl p-6 bg-purple-50/40 hover:shadow-md transition"
+  >
+    <div
+      class="font-semibold text-gray-800 mb-4 pb-2 border-b border-purple-200"
+    >
+      4. Upload Guest List
+    </div>
 
-          <div class="grid grid-cols-3 gap-2 mb-4">
-            <button
-              (click)="setGuestInputMethod('manual')"
-              class="bg-gray-200 text-gray-600 px-4 py-2 rounded text-sm hover:bg-gray-300"
-              [class.bg-indigo-500]="guestInputMethod === 'manual'"
-              [class.text-white]="guestInputMethod === 'manual'"
-            >
-              Type Manually
-            </button>
-            <button
-              (click)="setGuestInputMethod('csv')"
-              class="bg-gray-200 text-gray-600 px-4 py-2 rounded text-sm hover:bg-gray-300"
-              [class.bg-indigo-500]="guestInputMethod === 'csv'"
-              [class.text-white]="guestInputMethod === 'csv'"
-            >
-              Upload CSV
-            </button>
-            <button
-              (click)="setGuestInputMethod('contacts')"
-              class="bg-gray-200 text-gray-600 px-4 py-2 rounded text-sm hover:bg-gray-300"
-              [class.bg-indigo-500]="guestInputMethod === 'contacts'"
-              [class.text-white]="guestInputMethod === 'contacts'"
-            >
-              Import Contacts
-            </button>
-          </div>
+    <!-- Input Method Buttons -->
+    <div class="grid grid-cols-3 gap-3 mb-4">
+      <button
+        (click)="setGuestInputMethod('manual')"
+        class="px-4 py-2 rounded-lg text-sm border transition"
+        [class.bg-[#8d40a6]]="guestInputMethod === 'manual'"
+        [class.text-white]="guestInputMethod === 'manual'"
+        [class.border-[#8d40a6]]="guestInputMethod === 'manual'"
+        [class.bg-gray-100]="guestInputMethod !== 'manual'"
+        [class.text-gray-600]="guestInputMethod !== 'manual'"
+      >
+        Type Manually
+      </button>
+      <button
+        (click)="setGuestInputMethod('csv')"
+        class="px-4 py-2 rounded-lg text-sm border transition"
+        [class.bg-[#8d40a6]]="guestInputMethod === 'csv'"
+        [class.text-white]="guestInputMethod === 'csv'"
+        [class.border-[#8d40a6]]="guestInputMethod === 'csv'"
+        [class.bg-gray-100]="guestInputMethod !== 'csv'"
+        [class.text-gray-600]="guestInputMethod !== 'csv'"
+      >
+        Upload CSV
+      </button>
+      <button
+        (click)="setGuestInputMethod('contacts')"
+        class="px-4 py-2 rounded-lg text-sm border transition"
+        [class.bg-[#8d40a6]]="guestInputMethod === 'contacts'"
+        [class.text-white]="guestInputMethod === 'contacts'"
+        [class.border-[#8d40a6]]="guestInputMethod === 'contacts'"
+        [class.bg-gray-100]="guestInputMethod !== 'contacts'"
+        [class.text-gray-600]="guestInputMethod !== 'contacts'"
+      >
+        Import Contacts
+      </button>
+    </div>
 
-          <!-- Manual Guest Entry -->
-          <div *ngIf="guestInputMethod === 'manual'" class="space-y-3 mb-4">
-            <div class="flex gap-2">
-              <input
-                [(ngModel)]="newGuestName"
-                class="flex-1 px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                placeholder="Guest Name"
-              />
-              <input
-                [(ngModel)]="newGuestEmail"
-                class="flex-1 px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                placeholder="Guest Email"
-              />
-              <button
-                (click)="addGuest()"
-                class="bg-indigo-500 text-white px-4 py-2 rounded text-sm hover:bg-indigo-600"
-              >
-                Add
-              </button>
-            </div>
-          </div>
+    <!-- Manual Guest Entry -->
+<div *ngIf="guestInputMethod === 'manual'" class="space-y-3 mb-4">
+  <div class="flex gap-2 items-end">
+<div class="flex-1">
+  <input
+    [(ngModel)]="newGuestName"
+    (ngModelChange)="clearError('name')"
+    class="w-full px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-[#8d40a6]"
+    [ngClass]="{ 'border-red-500': guestErrors.name, 'border-purple-300': !guestErrors.name }"
+    placeholder="Guest Name"
+  />
+  <!-- Reserve space for error -->
+  <span class="text-red-500 text-xs min-h-[1rem] block">
+    {{ guestErrors.name }}
+  </span>
+</div>
 
-          <!-- Guest List Display -->
-          <div class="bg-gray-100 border border-gray-200 rounded p-3 h-32 overflow-y-auto">
-            <div
-              *ngFor="let guest of guestList"
-              class="flex justify-between items-center py-2 border-b border-gray-100 last:border-b-0"
-            >
-              <span class="text-sm">{{ guest.name }} ({{ guest.email }})</span>
-              <span class="text-green-500 text-sm" *ngIf="guest.status === 'added'">✓</span>
-              <button (click)="removeGuest(guest)" class="text-red-500 text-sm hover:text-red-700">
-                ×
-              </button>
-            </div>
-          </div>
-        </div>
+<div class="flex-1">
+  <input
+    [(ngModel)]="newGuestEmail"
+    (ngModelChange)="clearError('email')"
+    class="w-full px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-[#8d40a6]"
+    [ngClass]="{ 'border-red-500': guestErrors.email, 'border-purple-300': !guestErrors.email }"
+    placeholder="Guest Email"
+    type="email"
+  />
+  <span class="text-red-500 text-xs min-h-[1rem] block">
+    {{ guestErrors.email }}
+  </span>
+</div>
+
+<div class="flex-1">
+  <input
+    [(ngModel)]="newGuestMobile"
+    (ngModelChange)="clearError('mobile')"
+    class="w-full px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-[#8d40a6]"
+    [ngClass]="{ 'border-red-500': guestErrors.mobile, 'border-purple-300': !guestErrors.mobile }"
+    placeholder="Mobile Number"
+    type="tel"
+  />
+  <span class="text-red-500 text-xs min-h-[1rem] block">
+    {{ guestErrors.mobile }}
+  </span>
+</div>
+
+
+    <!-- Add Button (small) -->
+    <button
+      (click)="addGuest()"
+      class="bg-[#8d40a6] text-white px-4 py-2 rounded-lg text-sm hover:bg-purple-700 transition self-start"
+    >
+      Add
+    </button>
+  </div>
+</div>
+
+
+
+    <!-- Guest List Display (always visible) -->
+    <div
+      class="bg-gray-100 border border-gray-200 rounded-lg p-3 h-40 overflow-y-auto"
+    >
+      <div
+        *ngFor="let guest of guestList"
+        class="flex justify-between items-center py-2 border-b border-gray-200 last:border-b-0"
+      >
+        <span class="text-sm"
+          >{{ guest.name }} ({{ guest.email }}) - {{ guest.mobile }}</span
+        >
+        <span
+          class="text-green-500 text-sm"
+          *ngIf="guest.status === 'added'"
+          >✓</span
+        >
+        <button
+          (click)="removeGuest(guest)"
+          class="text-red-500 text-sm hover:text-red-700"
+        >
+          ×
+        </button>
       </div>
 
+      <div *ngIf="guestList.length === 0" class="text-gray-500 text-sm text-center py-6">
+        No guests added yet
+      </div>
+    </div>
+  </div>
+</div>
+
+
       <!-- Step 4: Preview & Send -->
-      <div *ngIf="currentStep === 4" class="mb-8">
-        <div class="border-2 border-gray-200 rounded-lg p-5 bg-gray-50">
-          <div class="font-semibold text-gray-800 mb-4 pb-2 border-b border-gray-200">
-            5. Preview Event Page & Mock Invitation
+      <div *ngIf="currentStep === 4" class="mb-12">
+        <div
+          class="border border-purple-200 rounded-2xl p-8 bg-gradient-to-br from-purple-50 to-white shadow-md hover:shadow-xl transition"
+        >
+          <!-- Header -->
+          <div
+            class="font-bold text-gray-800 mb-8 pb-3 border-b border-purple-200 text-xl flex items-center gap-3"
+          >
+            <span class="w-3 h-3 rounded-full bg-[#8d40a6]"></span>
+            ✨ Preview Event & Mock Invitation
           </div>
 
           <!-- Mock Invitation Preview -->
           <div
-            class="text-white p-5 rounded-lg text-center mb-4"
+            class="relative text-white p-10 rounded-2xl text-center mb-10 shadow-xl overflow-hidden"
             [ngStyle]="{
-              background: selectedDesign?.gradient || 'linear-gradient(45deg, #667eea, #764ba2)'
+              background: selectedDesign?.gradient || 'linear-gradient(135deg, #8d40a6, #6d28d9)'
             }"
           >
-            <h3 class="text-xl font-semibold mb-3">{{ eventData.name || 'Event Name' }}</h3>
-            <p class="mb-1"><strong>Date:</strong> {{ eventData.date || 'Select Date' }}</p>
-            <p class="mb-1"><strong>Venue:</strong> {{ eventData.venue || 'Venue Address' }}</p>
-            <p class="mb-1"><strong>Host:</strong> Your Name</p>
-            <p class="mb-3"><strong>Base Gift Share:</strong> €{{ eventData.baseAmount || '0' }}</p>
+            <!-- Glow Effect -->
+            <div
+              class="absolute -top-10 -right-10 w-40 h-40 bg-white/20 rounded-full blur-3xl"
+            ></div>
 
-            <div class="bg-white bg-opacity-20 p-2 mb-3 rounded text-xs">
-              Includes: Welcome drinks, finger food, transportation<br />
-              <span *ngIf="eventData.over18Only">Rules: Over 18s only</span>
-              <span *ngIf="eventData.noPets && eventData.over18Only">, </span>
-              <span *ngIf="eventData.noPets">No pets</span>
+            <h3 class="text-3xl font-extrabold mb-6 tracking-wide drop-shadow-md uppercase">
+              {{ eventData.name || 'Event Name' }}
+            </h3>
+
+            <!-- Event Details neatly aligned -->
+            <div
+              class="bg-white/20 backdrop-blur-sm p-5 rounded-xl inline-block text-left mb-6 shadow-inner"
+            >
+              <p class="mb-2 text-sm flex items-center gap-2">
+                <span>📅</span> <strong>Date:</strong>
+                <span>{{ eventData.date || 'Select Date' }}</span>
+              </p>
+              <p class="mb-2 text-sm flex items-center gap-2">
+                <span>📍</span> <strong>Venue:</strong>
+                <span>{{ eventData.venue || 'Venue Address' }}</span>
+              </p>
+              <p class="mb-2 text-sm flex items-center gap-2">
+                <span>🧑‍🤝‍🧑</span> <strong>Host:</strong>
+                <span>Your Name</span>
+              </p>
+              <p class="text-sm flex items-center gap-2">
+                <span>💰</span> <strong>Base Gift Share:</strong>
+                <span>€{{ eventData.baseAmount || '0' }}</span>
+              </p>
             </div>
 
-            <button class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600">
-              Accept Invitation
+            <!-- Extras -->
+            <div
+              class="bg-white/30 backdrop-blur-md p-4 mb-6 rounded-lg text-xs leading-relaxed shadow-inner"
+            >
+              🎁 Includes: Welcome drinks, finger food, transportation <br />
+              <span *ngIf="eventData.over18Only">🔞 Rules: Over 18s only</span>
+              <span *ngIf="eventData.noPets && eventData.over18Only">, </span>
+              <span *ngIf="eventData.noPets">🚫 No pets</span>
+            </div>
+
+            <!-- CTA -->
+            <button
+              class="bg-gradient-to-r from-green-400 to-green-600 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition transform hover:scale-105"
+            >
+              ✅ Accept Invitation
             </button>
           </div>
 
           <!-- Summary -->
-          <div class="bg-gray-100 p-4 rounded mb-4">
-            <h4 class="font-semibold mb-2">Event Summary:</h4>
-            <p class="text-sm mb-1">Guests: {{ guestList.length }}</p>
-            <p class="text-sm mb-1">
-              Expected Total: €{{ (eventData.baseAmount || 0) * guestList.length }}
-            </p>
-            <p class="text-sm">Design: {{ selectedDesign?.name || 'None selected' }}</p>
+          <div
+            class="bg-gradient-to-r from-purple-100 to-purple-50 border border-purple-200 p-6 rounded-xl mb-8 shadow-sm"
+          >
+            <h4 class="font-semibold mb-4 text-gray-700 flex items-center gap-2 text-lg">
+              <span class="w-2 h-2 rounded-full bg-[#8d40a6]"></span>
+              📋 Event Summary
+            </h4>
+            <div class="space-y-2 text-sm text-gray-700">
+              <p>
+                👥 Guests: <strong>{{ guestList.length }}</strong>
+              </p>
+              <p>
+                💰 Expected Total:
+                <strong>€{{ (eventData.baseAmount || 0) * guestList.length }}</strong>
+              </p>
+              <p>
+                🎨 Design: <strong>{{ selectedDesign?.name || 'None selected' }}</strong>
+              </p>
+            </div>
           </div>
 
+          <!-- Final CTA -->
           <button
             (click)="sendInvites()"
-            class="w-full bg-green-500 text-white py-3 rounded font-semibold hover:bg-green-600"
+            class="w-full bg-gradient-to-r from-[#8d40a6] to-purple-700 text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-2xl transition transform hover:scale-105"
           >
-            Send Invites to All ({{ guestList.length }} guests)
+            🚀 Send Invites to All ({{ guestList.length }} guests)
           </button>
         </div>
       </div>
 
       <!-- Navigation Buttons -->
-      <div class="flex justify-between mt-8">
+      <div class="flex justify-between items-center mt-10">
         <button
           (click)="previousStep()"
           *ngIf="currentStep > 1"
-          class="bg-gray-200 text-gray-600 px-6 py-2 rounded hover:bg-gray-300"
+          class="flex items-center gap-2 px-6 py-1 rounded-lg font-medium border border-gray-300 text-gray-600 bg-gray-100 hover:bg-gray-200 transition"
         >
+          <span class="text-lg mb-[6px]">←</span>
+
           Previous
         </button>
-        <div></div>
+
         <button
           (click)="nextStep()"
           *ngIf="currentStep < 4"
-          class="bg-indigo-500 text-white px-6 py-2 rounded hover:bg-indigo-600"
+          class="px-8 py-1 rounded-lg flex items-center gap-2 font-semibold bg-[#8d40a6] text-white shadow-md hover:bg-purple-700 transition"
           [disabled]="!canProceedToNext()"
         >
           Next
+          <span class="text-lg mb-[6px]">→</span>
         </button>
       </div>
     </div>

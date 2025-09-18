@@ -4,18 +4,18 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
-    selector: 'app-login',
+    selector: 'app-reset-password',
     standalone: true,
     imports: [FormsModule, RouterLink, CommonModule],
-    templateUrl: './login.component.html',
-    styleUrl: './login.component.scss'
+    templateUrl: './reset-password.component.html',
+    styleUrl: './reset-password.component.scss'
 })
-export class LoginComponent {
-    email = '';
-    password = '';
+export class ResetPasswordComponent {
+    newPassword = '';
+    confirmPassword = '';
 
     onSubmit() {
         // Login logic will be implemented later
-        console.log('Login attempt:', { email: this.email, password: this.password });
+        console.log('Login attempt:', { newPassword: this.newPassword, confirmPassword: this.confirmPassword });
     }
 }
