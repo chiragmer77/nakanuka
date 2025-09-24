@@ -1,0 +1,50 @@
+<div class="p-6 bg-gradient-to-br from-purple-50 to-gray-100 min-h-screen">
+  <!-- Header -->
+  <div class="bg-gradient-to-r from-[#8d40a6] to-purple-600 text-white px-6 py-4 rounded-t-xl shadow-lg">
+    <h2 class="text-2xl font-bold tracking-wide"> Main Dashboard - My Events</h2>
+  </div>
+
+  <!-- Content -->
+  <div class="bg-white shadow-xl rounded-b-xl p-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      
+      <!-- Host Dashboard -->
+      <div class="rounded-xl p-5 bg-white border border-gray-200 hover:shadow-xl transition-all duration-300">
+        <h3 class="font-semibold text-gray-800 mb-4 pb-2 border-b">Host Dashboard</h3>
+        <div class="flex flex-col gap-4">
+          <a routerLink="/events"
+             class="flex items-center gap-3 px-5 py-3 rounded-lg bg-gradient-to-r from-[#8d40a6] to-purple-600 text-white font-medium shadow-md hover:shadow-lg hover:scale-105 hover:ring-2 hover:ring-[#8d40a6]/50 transition-all duration-300">
+            <span>1️⃣</span> <span>Create Event</span>
+          </a>
+
+          <a routerLink="/events/active-event"
+             class="flex items-center gap-3 px-5 py-3 rounded-lg bg-gradient-to-r from-[#8d40a6] to-purple-600 text-white font-medium shadow-md hover:shadow-lg hover:scale-105 hover:ring-2 hover:ring-[#8d40a6]/50 transition-all duration-300">
+            <span>2️⃣</span> <span>My Active Host Events</span>
+          </a>
+
+          <a routerLink="/events/past-event"
+             class="flex items-center gap-3 px-5 py-3 rounded-lg bg-gradient-to-r from-[#8d40a6] to-purple-600 text-white font-medium shadow-md hover:shadow-lg hover:scale-105 hover:ring-2 hover:ring-[#8d40a6]/50 transition-all duration-300">
+            <span>3️⃣</span> <span>Past Events</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Guest Dashboard -->
+      <div class="rounded-xl p-5 bg-white border border-gray-200 hover:shadow-xl transition-all duration-300">
+        <h3 class="font-semibold text-gray-800 mb-4 pb-2 border-b">Guest Dashboard</h3>
+        <div class="flex flex-col gap-4">
+          <a routerLink="/dashboard/main"
+             class="flex items-center gap-3 px-5 py-3 rounded-lg bg-gradient-to-r from-[#8d40a6] to-purple-600 text-white font-medium shadow-md hover:shadow-lg hover:scale-105 hover:ring-2 hover:ring-[#8d40a6]/50 transition-all duration-300">
+            <span>1️⃣</span> <span>My Invites</span>
+          </a>
+
+          <a routerLink="/dashboard/main"
+             class="flex items-center gap-3 px-5 py-3 rounded-lg bg-gradient-to-r from-[#8d40a6] to-purple-600 text-white font-medium shadow-md hover:shadow-lg hover:scale-105 hover:ring-2 hover:ring-[#8d40a6]/50 transition-all duration-300">
+            <span>2️⃣</span> <span>Upcoming Events</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

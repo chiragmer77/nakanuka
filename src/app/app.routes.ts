@@ -51,6 +51,18 @@ export const routes: Routes = [
         children: [
             {
                 path: '',
+                redirectTo: 'landing',
+                pathMatch: 'full',
+            },
+            {
+                path: 'landing',
+                loadComponent: () =>
+                    import('./pages/landing-dashboard/landing-dashboard.component').then(
+                        (m) => m.LandingDashboardComponent
+                    ),
+            },
+            {
+                path: 'main',
                 loadComponent: () =>
                     import('./pages/dashboard/dashboard.component').then((m) => m.DashboardComponent),
             },
@@ -73,6 +85,20 @@ export const routes: Routes = [
                 loadComponent: () =>
                     import('./pages/events/add-event/add-event.component').then(
                         (m) => m.AddEventComponent
+                    ),
+            },
+            {
+                path: 'active-event',
+                loadComponent: () =>
+                    import('./pages/events/active-event/active-event.component').then(
+                        (m) => m.ActiveEventComponent
+                    ),
+            },
+            {
+                path: 'past-event',
+                loadComponent: () =>
+                    import('./pages/events/past-event/past-event.component').then(
+                        (m) => m.PastEventComponent
                     ),
             },
         ],
