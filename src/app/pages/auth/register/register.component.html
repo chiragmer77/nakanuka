@@ -72,7 +72,7 @@
               type="tel"
               required
               pattern="^[0-9]{10}$"
-              [(ngModel)]="mobileNumber"
+              [(ngModel)]="phone"
               #mobileCtrl="ngModel"
               [ngClass]="{
                 'border-red-500 focus:ring-red-300': mobileCtrl.invalid && mobileCtrl.touched,
